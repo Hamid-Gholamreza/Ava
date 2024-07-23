@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         'custom-color-1': '#00BA9F',
+        'sidebar-width': '166px',
       },
     },
   },
