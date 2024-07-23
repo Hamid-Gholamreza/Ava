@@ -1,11 +1,12 @@
 import React from "react";
+import Account from "../components/Account";
 
 
 
 function Archive() {
     return(
-        <div className="bg-blue-500 text-white p-4">
-            Hello, world! This is Tailwind CSS in action.
+        <div className="bg-white text-white p-4">
+            <Account />
         </div>
     )
 }
