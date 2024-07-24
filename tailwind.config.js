@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         'custom-color-1': '#00BA9F',
         'custom-color-2': '#969696',
+        'custom-color-3': '#02816E',
         'sidebar-width': '166px',
       },
     },

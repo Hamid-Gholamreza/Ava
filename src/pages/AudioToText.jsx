@@ -12,7 +12,7 @@ function AudioToText() {
             <ChangeAudioToText />
             <AudioToTextContainer />
             <Account />
-            <SideMenu />
+            <SideMenu clickedItem='audioToText' />
         </div>
     );
 }

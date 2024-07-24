@@ -7,7 +7,7 @@ function Archive() {
     return(
         <div className="bg-white text-white w-screen h-screen relative">
             <Account />
-            <SideMenu />
+            <SideMenu clickedItem='archive' />
         </div>
     );
 }
