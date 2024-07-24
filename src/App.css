@@ -58,3 +58,19 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+input[type="file"] {
+  display: none;
+}
+
+/* Style the custom button */
+.custom-file-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #0074D9; /* Example background color */
+  color: white;
+  border: none;
+  cursor: pointer;
+}

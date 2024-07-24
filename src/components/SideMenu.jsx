@@ -26,7 +26,7 @@ function SideMenu(props) {
 
             <div className="absolute top-[268px] text-center mx-2 flex flex-col justify-center items-center gap-3">
                 <div id="audioToText" key={0} className={`text-base w-[150px] h-[48px] rounded-[10px] 
-                    bg-${props.clickedItem === 'audioToText' ? 'custom-color-3': 'custom-color-1'}` }>
+                    ${props.clickedItem === 'audioToText' ? 'bg-custom-color-3': 'bg-custom-color-1'}` }>
                     <Link to={'/audio-to-text'} className="flex w-full h-full justify-center items-center gap-1" >
                         <p>تبدیل گفتار</p>
                         <img src={speech_icon} alt="" className="w-[42px] h-[24.81px]" />
@@ -34,7 +34,7 @@ function SideMenu(props) {
                 </div>
 
                 <div id="archive" className={`text-base flex mx-auto w-[150px] h-[48px] rounded-[10px]
-                bg-${props.clickedItem === 'archive' ? 'custom-color-3': 'custom-color-1'}`}>
+                ${props.clickedItem === 'archive' ? 'bg-custom-color-3': 'bg-custom-color-1'}`}>
                     <Link to={'/archive'} className="flex w-full h-full justify-center items-center gap-8" >
                         <p>آرشیو</p>
                         <img src={archive_icon} alt="" className="w-[20px] h-[20px]" />
