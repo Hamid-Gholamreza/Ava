@@ -5,7 +5,7 @@ import chain_icon from '../icons/sideMenu/chain_icon_light.svg';
 function Link() {
 
     return (
-        <div className="w-full h-[429px] rounded-b-[25px] rounded-tl-[25px] border-[1px] border-custom-color-red flex
+        <div className="w-full h-[429px] rounded-b-[25px] rounded-[25px] border-[1px] border-custom-color-red flex
         flex-col justify-center items-center gap-3">
             <form action="" className="w-full h-full flex flex-col justify-center items-center gap-4">
                 <div className="w-[328px] h-[46px] flex justify-center items-center">
