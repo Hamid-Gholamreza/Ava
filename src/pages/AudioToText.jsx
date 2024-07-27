@@ -13,10 +13,14 @@ function AudioToText() {
                 <DropDownMenu type='account' />
             </div>
             <SideMenu clickedItem='audioToText' />
-            <div className="absolute top-[728px] left-[435px] w-[200px] h-[37px] flex flex-row-reverse justify-center items-center
+            <div className="absolute top-[735px] left-[435px] w-[200px] h-[81px] flex flex-row-reverse justify-center items-center
             gap-3" >
-                <p className="text-custom-color-2 text-sm rtl">:زبان گفتار</p>
-                <DropDownMenu type='language' />
+                <div className="w-full h-full">
+                    <div className="w-full h-ful flex justify-center items-center gap-5 py-auto">
+                        <DropDownMenu type='language' />
+                        <p className="h-full block text-custom-color-2 text-sm rtl">:زبان گفتار</p>
+                    </div>
+                </div>
             </div>
         </div>
     );
