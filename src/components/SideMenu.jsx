@@ -7,17 +7,9 @@ import { Link } from "react-router-dom";
 
 function SideMenu(props) {
 
-    if (props.clickedItem === 'archive') {
-        console.log('clicked on archive')
-    }
-
-    else if (props.clickedItem === 'audioToText') {
-        console.log('clicked on audio to text');
-    }
-
 
     return(
-        <div className="w-[166px] h-screen bg-custom-color-1 py-0 absolute top-0 right-0
+        <div className="w-[166px] h-[924px] bg-custom-color-1 py-0 absolute top-0 right-0
         rounded-tl-[10px] rounded-bl-[10px]">
             <div className="flex flex-row-reverse text-xl w-[54px] h-[38px] absolute top-[48px] left-[55px]">
                 <img src={ava_icon} alt="" />
