@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import userIcon from '../icons/user_icon.svg';
 import dropIcon from '../icons/drop_icon.svg';
 import dropUpIcon from '../icons/drop_up_icon.svg';
@@ -64,7 +65,9 @@ function DropDownMenu(props) {
                                             <img src={logoutIcon} alt="" />
                                         </div>
                                         <div>
-                                            <p>خروج</p>
+                                            <Link>
+                                                <p>خروج</p>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

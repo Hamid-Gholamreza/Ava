@@ -1,6 +1,7 @@
 import React from "react";
 import DropDownMenu from "../components/DropDownMenu";
 import SideMenu from "../components/SideMenu";
+import Table from '../components/Table';
 
 
 function Archive() {
@@ -11,6 +12,9 @@ function Archive() {
                 <DropDownMenu type='account' />
             </div>
             <SideMenu clickedItem='archive' />
+            <div className="absolute top-[200px] left-[200px]">
+                <Table />
+            </div>
         </div>
     );
 }
