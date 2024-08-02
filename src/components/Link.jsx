@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import chain_icon from '../icons/sideMenu/chain_icon_light.svg';
+import axios from "axios";
 
 
 function Link() {
+    
 
     return (
         <div className="w-full h-[429px] rounded-b-[25px] rounded-[25px] border-[1px] border-custom-color-red flex
