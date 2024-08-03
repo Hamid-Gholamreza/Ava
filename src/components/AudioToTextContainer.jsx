@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import mic_icon from '../icons/sideMenu/mic_icon.svg';
 import mic_icon_light from '../icons/sideMenu/mic_icon_light.svg';
 import upload_icon from '../icons/sideMenu/upload_icon.svg';
@@ -8,18 +8,25 @@ import chain_icon_light from '../icons/sideMenu/chain_icon_light.svg';
 import RecordVoice from "./RecordVoice";
 import UploadFile from "./UploadFile";
 import Link from "./Link";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import updateAudioToText from "../actions/updateAudioToText";
 
-function AudioToTextContainer() {
+function AudioToTextContainer(props) {
 
-    const [activeComponent, setActiveComponent] = useState('recordVoice'); // Initial active component
+    
+    const handleActiveComponent = (type) => {
+        props.updateAudioToText(type);
+        handleButtonClick(type);
+    }
 
-    const handleButtonClick = (componentName) => {
-        setActiveComponent(componentName);
+
+    const handleButtonClick = (type) => {
         const linkBtn = document.querySelector('#link');
         const uploadFileBtn = document.querySelector('#upload');
         const recordBtn = document.querySelector('#record');
 
-        if (componentName === 'recordVoice') {
+        if (type === 'recordVoice') {
             linkBtn.classList.remove('bg-custom-color-red');
             linkBtn.querySelector('p').classList.remove('text-white');
             linkBtn.querySelector('p').classList.add('text-custom-color-2');
@@ -34,7 +41,7 @@ function AudioToTextContainer() {
             recordBtn.querySelector('img').src = mic_icon_light;
         }
 
-        else if (componentName === 'uploadFile') {
+        else if (type === 'uploadFile') {
             linkBtn.classList.remove('bg-custom-color-red');
             recordBtn.classList.remove('bg-custom-color-1');
             recordBtn.querySelector('p').classList.remove('text-white');
@@ -49,7 +56,7 @@ function AudioToTextContainer() {
             linkBtn.querySelector('img').src = chain_icon;
         }
 
-        else if (componentName === 'link') {
+        else if (type === 'link') {
             recordBtn.classList.remove('bg-custom-color-1');
             recordBtn.querySelector('p').classList.remove('text-white');
             recordBtn.querySelector('p').classList.add('text-custom-color-2');
@@ -69,29 +76,41 @@ function AudioToTextContainer() {
         <div className="w-[653px] h-[477px] absolute top-[237px] left-[440px]">
             <div className="flex flex-row-reverse h-[48px]">
                 <div id="record" className="w-[144px] bg-custom-color-1 rounded-t-[10px]">
-                    <button className="w-full h-full flex justify-center items-center gap-2" onClick={() => handleButtonClick('recordVoice')}>
+                    <button className="w-full h-full flex justify-center items-center gap-2" onClick={() => handleActiveComponent('recordVoice')}>
                         <p className="text-base font-thin text-white">ضبط صدا</p>
                         <img src={mic_icon_light} alt="" className="w-[13px] h-[17.9px]" />
                     </button>
                 </div>
                 <div id="upload" className="w-[144px] rounded-t-[10px]">
-                    <button className="w-full h-full flex justify-center items-center gap-2" onClick={() => handleButtonClick('uploadFile')}>
+                    <button className="w-full h-full flex justify-center items-center gap-2" onClick={() => handleActiveComponent('uploadFile')}>
                         <p className="text-base font-thin text-custom-color-2">بارگزاری فایل</p>
                         <img src={upload_icon} alt="" className="w-[20.42px] h-[16.67px]" />
                     </button>
                 </div>
                 <div id="link" className="w-[90px] rounded-t-[10px]">
-                    <button className="w-full h-full flex justify-center items-center gap-2" onClick={() => handleButtonClick('link')}>
+                    <button className="w-full h-full flex justify-center items-center gap-2" onClick={() => handleActiveComponent('link')}>
                         <p className="text-base font-thin text-custom-color-2">لینک</p>
                         <img src={chain_icon} alt="" className="w-[20.42px] h-[16.67px]" />
                     </button>
                 </div>
             </div>
-            {activeComponent === 'recordVoice' && <RecordVoice />}
-            {activeComponent === 'uploadFile' && <UploadFile />}
-            {activeComponent === 'link' && <Link />}
+            {props.audioToTextData === 'recordVoice' && <RecordVoice />}
+            {props.audioToTextData === 'uploadFile' && <UploadFile />}
+            {props.audioToTextData === 'link' && <Link />}
         </div>
     );
 }
 
-export default AudioToTextContainer;
+function mapStateToProps(state) {
+    return {
+        audioToTextData: state.audioToText,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        updateAudioToText: updateAudioToText
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AudioToTextContainer);

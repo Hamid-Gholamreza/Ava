@@ -1,32 +1,27 @@
-import React, {useState} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import userIcon from '../icons/user_icon.svg';
 import dropIcon from '../icons/drop_icon.svg';
 import dropUpIcon from '../icons/drop_up_icon.svg';
 import logoutIcon from '../icons/logout_icon.svg';
+import { connect } from "react-redux";
+import updateDropdown from "../actions/updateDropdown";
+import { bindActionCreators } from "redux";
 
 
 function DropDownMenu(props) {
 
-    const [open, setOpen] = useState(false);
 
-
-    function toggleDropdown() {
-
-        if (open) {
-            setOpen(false);
-        }
-        else if (!open) {
-            setOpen(true);
-        }
-        
+    function handleToggle(dropdownId) {
+        props.updateDropdown(dropdownId);
     }
+
     
     let menu;
     if (props.type === 'account') {
-            if (!open) {
+            if (props.dropdownData.accountDropdown.status === false) {
                 menu = <div id="dropdown" className="w-fill h-[37px] block text-custom-color-1 border-solid border-[1px] border-custom-color-1 rounded-[20px]">
-                            <button className="w-full h-full" onClick={toggleDropdown}>
+                            <button className="w-full h-full" onClick={() => handleToggle('accountDropdown')}>
                                 <div className="flex flex-row-reverse justify-center items-center gap-2 px-5">
                                     <div>
                                         <img src={userIcon} alt="" className="" />
@@ -42,9 +37,9 @@ function DropDownMenu(props) {
                         </div>
             }
 
-            else if (open) {
+            else if (props.dropdownData.accountDropdown.status === true) {
                 menu = <div id="dropdown" className="w-fill h-[81px] block text-custom-color-1 border-solid border-[1px] border-custom-color-1 rounded-[20px]">
-                            <button className="w-full h-full" onClick={toggleDropdown}>
+                            <button className="w-full h-full" onClick={() => handleToggle('accountDropdown')}>
                                 <div className="flex flex-col">
                                     <div className="flex flex-row-reverse justify-center items-center gap-2 px-5">
                                         <div className="">
@@ -61,7 +56,7 @@ function DropDownMenu(props) {
                                         <hr className="border-t-[1px] border-custom-color-1" />
                                     </div>
                                     <div className="flex flex-row-reverse justify-center items-center gap-2 pr-5 pl-11 pt-2">
-                                        <div className="">
+                                        <div>
                                             <img src={logoutIcon} alt="" />
                                         </div>
                                         <div>
@@ -77,9 +72,9 @@ function DropDownMenu(props) {
     }
 
     else if (props.type === 'language') {
-        if (!open) {
+        if (props.dropdownData.languageDropdown.status === false) {
             menu = <div id="dropdown" className="w-[105px] h-[37px] block text-custom-color-1 border-solid border-[1px] border-custom-color-1 rounded-[20px]">
-                        <button className="w-full h-full" onClick={toggleDropdown}>
+                        <button className="w-full h-full" onClick={() => handleToggle('languageDropdown')}>
                             <div className="flex flex-row-reverse justify-center items-center gap-2 px-5">
                                 <div>
                                     <p>فارسی</p>
@@ -92,9 +87,9 @@ function DropDownMenu(props) {
                     </div>
         }
 
-        else if (open) {
+        else if (props.dropdownData.languageDropdown.status === true) {
             menu = <div id="dropdown" className="w-[105px] h-[81px] block text-custom-color-1 border-solid border-[1px] border-custom-color-1 rounded-[20px]">
-                        <button className="w-full h-full" onClick={toggleDropdown}>
+                        <button className="w-full h-full" onClick={() => handleToggle('languageDropdown')}>
                             <div className="flex flex-col">
                                 <div className="flex flex-row-reverse justify-center items-center gap-2">
                                     <div>
@@ -126,4 +121,16 @@ function DropDownMenu(props) {
     )
 }
 
-export default DropDownMenu;
+function mapStateToProps(state) {
+    return {
+        dropdownData: state.dropdown
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        updateDropdown: updateDropdown
+    }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DropDownMenu);

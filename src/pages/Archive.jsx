@@ -11,7 +11,7 @@ function Archive() {
             <div className="absolute top-[48px] left-[47px]">
                 <DropDownMenu type='account' />
             </div>
-            <SideMenu clickedItem='archive' />
+            <SideMenu type='archive' />
             <div className="absolute top-[200px] left-[200px]">
                 <Table />
             </div>

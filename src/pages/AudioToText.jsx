@@ -12,7 +12,7 @@ function AudioToText() {
             <div className="absolute top-[48px] left-[47px]">
                 <DropDownMenu type='account' />
             </div>
-            <SideMenu clickedItem='audioToText' />
+            <SideMenu type='audioToText' />
             <div className="absolute top-[725px] left-[435px] w-[179px] h-[81px] flex flex-row-reverse justify-center items-center
             gap-3" >
                 <div className="w-full h-full flex flex-row-reverse justify-center items-center box-border gap-3">
